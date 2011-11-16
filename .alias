@@ -1,0 +1,15 @@
+#searching a directory 
+alias l='ls -lhartGA'
+alias gls='ls | grep'
+alias glss='l | grep' #gl taken by plugin github
+
+#traversing directories
+#mainly covered in oh-my-zsh
+
+#globbing
+#need to look into
+
+#grep 
+alias galias='alias | grep' #tons of aliases once oh-my-zsh is installed
+alias ghistory='history | grep' #sometimes ctrl+r isn't entirely what I like to use
+
