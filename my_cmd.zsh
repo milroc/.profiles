@@ -1,3 +1,3 @@
-if [ -f .alias ]; then
-   source .alias
+if [ -f ~/.profiles/.alias ]; then
+   source ~/.profiles/.alias
 fi
