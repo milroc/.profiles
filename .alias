@@ -13,3 +13,6 @@ alias glss='l | grep' #gl taken by plugin github
 alias galias='alias | grep' #tons of aliases once oh-my-zsh is installed
 alias ghistory='history | grep' #sometimes ctrl+r isn't entirely what I like to use
 
+
+#finished
+alias finished='$HOME/.bin/finished'
