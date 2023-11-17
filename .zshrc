@@ -13,3 +13,12 @@ export PS1="%F{208}[%m]%f %F{226}%~%f: "
 if [ -f ~/.profiles/.alias ]; then
     source ~/.profiles/.alias
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# brew
+eval $(/opt/homebrew/bin/brew shellenv)
+
+eval $(thefuck --alias)
