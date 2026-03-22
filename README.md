@@ -1,12 +1,12 @@
-# .profiles
+# dotfiles
 
 Personal dotfiles and machine bootstrap for macOS and Linux.
 
 ## Quick Start
 
 ```bash
-git clone https://github.com/milroc/.profiles.git ~/.profiles
-cd ~/.profiles
+git clone https://github.com/milroc/dotfiles.git ~/dotfiles
+cd ~/dotfiles
 ./bootstrap.sh
 ```
 
@@ -44,7 +44,7 @@ cd ~/.profiles
 Review and uncomment cask apps you want. Run `brew bundle install` to apply changes:
 
 ```bash
-brew bundle install --file=~/.profiles/Brewfile
+brew bundle install --file=~/dotfiles/Brewfile
 ```
 
 ## Future: chezmoi migration

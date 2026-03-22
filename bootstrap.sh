@@ -145,13 +145,13 @@ setup_shared() {
   fi
 
   # Create .bashrc
-  if [ ! -f "$HOME/.bashrc" ] || ! grep -q "profiles/.alias" "$HOME/.bashrc" 2>/dev/null; then
+  if [ ! -f "$HOME/.bashrc" ] || ! grep -q "dotfiles/.alias" "$HOME/.bashrc" 2>/dev/null; then
     info "Creating .bashrc..."
     cat > "$HOME/.bashrc" << 'BASHRC'
 export PATH="/usr/local/bin:$PATH"
 export PS1="\[\e[38;5;208m\][\h]\[\e[0m\] \[\e[38;5;226m\]\w\[\e[0m\]: "
-if [ -f ~/.profiles/.alias ]; then
-  source ~/.profiles/.alias
+if [ -f ~/dotfiles/.alias ]; then
+  source ~/dotfiles/.alias
 fi
 BASHRC
     success ".bashrc created"

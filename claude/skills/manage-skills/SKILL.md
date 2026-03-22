@@ -1,15 +1,15 @@
 ---
 name: manage-skills
-description: Manage personal Claude Code skills stored in the .profiles repo. Use when the user wants to create, list, edit, sync, or remove custom slash commands.
+description: Manage personal Claude Code skills stored in the dotfiles repo. Use when the user wants to create, list, edit, sync, or remove custom slash commands.
 argument-hint: <list|create|edit|sync|remove> [skill-name]
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 
 # Manage Skills
 
-You are managing Claude Code skills stored in the user's `.profiles` repo. Skills are stored in `claude/skills/<name>/SKILL.md` and symlinked to `~/.claude/skills/` via `bootstrap.sh`.
+You are managing Claude Code skills stored in the user's `dotfiles` repo. Skills are stored in `claude/skills/<name>/SKILL.md` and symlinked to `~/.claude/skills/` via `bootstrap.sh`.
 
-The `.profiles` repo location is determined by finding the directory containing this skill file.
+The `dotfiles` repo location is determined by finding the directory containing this skill file.
 
 ## Subcommands
 
@@ -17,7 +17,7 @@ Parse the user's argument to determine which subcommand to run.
 
 ### `list`
 
-1. Glob for `claude/skills/*/SKILL.md` in the .profiles repo
+1. Glob for `claude/skills/*/SKILL.md` in the dotfiles repo
 2. For each skill found, read its frontmatter and display:
    - Name
    - Description
@@ -27,7 +27,7 @@ Parse the user's argument to determine which subcommand to run.
 ### `create <name>`
 
 1. Validate `<name>` is kebab-case (lowercase, hyphens only)
-2. Create `claude/skills/<name>/SKILL.md` in the .profiles repo with this template:
+2. Create `claude/skills/<name>/SKILL.md` in the dotfiles repo with this template:
 
 ```markdown
 ---
@@ -47,13 +47,13 @@ TODO — write instructions for what Claude should do when this skill is invoked
 
 ### `edit <name>`
 
-1. Find `claude/skills/<name>/SKILL.md` in the .profiles repo
+1. Find `claude/skills/<name>/SKILL.md` in the dotfiles repo
 2. Read it and present the contents to the user
 3. Wait for the user to describe changes, then apply them with Edit
 
 ### `sync`
 
-1. Find the .profiles repo root (parent of `claude/skills/`)
+1. Find the dotfiles repo root (parent of `claude/skills/`)
 2. Run:
 ```bash
 mkdir -p "$HOME/.claude/skills"
@@ -68,6 +68,6 @@ done
 ### `remove <name>`
 
 1. Confirm with the user before deleting
-2. Remove `claude/skills/<name>/` from the .profiles repo
+2. Remove `claude/skills/<name>/` from the dotfiles repo
 3. Remove the symlink from `~/.claude/skills/<name>`
 4. Report what was removed

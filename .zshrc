@@ -18,8 +18,8 @@ plugins=(git brew github python grep)
 export PS1="%F{208}[%m]%f %F{226}%~%f: "
 
 # Aliases
-if [ -f ~/.profiles/.alias ]; then
-  source ~/.profiles/.alias
+if [ -f ~/dotfiles/.alias ]; then
+  source ~/dotfiles/.alias
 fi
 
 # NVM
