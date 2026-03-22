@@ -1,0 +1,11 @@
+# Cross-platform CLI tools for Linux
+# Used by bootstrap.sh with apt/dnf/pacman
+# macOS uses Brewfile instead
+git
+curl
+wget
+htop
+tree
+jq
+ripgrep
+coreutils
