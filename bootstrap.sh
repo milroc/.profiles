@@ -202,3 +202,4 @@ fi
 
 echo ""
 success "Bootstrap complete! Open a new shell to apply changes."
+info "Next step: clone your GitHub repos with ./clone-repos.sh"
