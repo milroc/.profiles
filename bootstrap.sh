@@ -3,6 +3,15 @@ set -e
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 OS="$(uname -s)"
+SKIP_BREW=false
+ONLY_BREW=false
+
+for arg in "$@"; do
+  case "$arg" in
+    --skip-brew) SKIP_BREW=true ;;
+    --only-brew) ONLY_BREW=true ;;
+  esac
+done
 
 info() { printf "\033[0;34m[info]\033[0m %s\n" "$1"; }
 success() { printf "\033[0;32m[ok]\033[0m %s\n" "$1"; }
@@ -30,9 +39,14 @@ setup_macos() {
   success "Homebrew installed"
 
   # Brewfile
-  if [ -f "$DOTFILES_DIR/Brewfile" ]; then
+  if $SKIP_BREW; then
+    warn "Skipping Brewfile (--skip-brew)"
+  elif [ -f "$DOTFILES_DIR/Brewfile" ]; then
+    info "Updating Homebrew..."
+    brew update
+    brew upgrade
     info "Installing packages from Brewfile..."
-    brew bundle install --file="$DOTFILES_DIR/Brewfile" --no-lock
+    brew bundle install --file="$DOTFILES_DIR/Brewfile"
     success "Brewfile packages installed"
   fi
 
@@ -163,13 +177,28 @@ BASHRC
 # =============================================================================
 info "Bootstrapping on $OS..."
 
-case "$OS" in
-  Darwin) setup_macos ;;
-  Linux)  setup_linux ;;
-  *)      warn "Unsupported OS: $OS" ;;
-esac
+if $ONLY_BREW; then
+  if [[ "$OS" != "Darwin" ]]; then
+    warn "--only-brew is only supported on macOS"
+    exit 1
+  fi
+  if [ -f "$DOTFILES_DIR/Brewfile" ]; then
+    info "Updating Homebrew..."
+    brew update
+    brew upgrade
+    info "Installing packages from Brewfile..."
+    brew bundle install --file="$DOTFILES_DIR/Brewfile"
+    success "Brewfile packages installed"
+  fi
+else
+  case "$OS" in
+    Darwin) setup_macos ;;
+    Linux)  setup_linux ;;
+    *)      warn "Unsupported OS: $OS" ;;
+  esac
 
-setup_shared
+  setup_shared
+fi
 
 echo ""
 success "Bootstrap complete! Open a new shell to apply changes."
