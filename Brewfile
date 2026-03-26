@@ -1,27 +1,25 @@
 # =============================================================================
-# CLI Tools (already installed via Homebrew)
+# CLI Tools
 # =============================================================================
+brew "bats-core"
 brew "coreutils"
 brew "gh"
 brew "htop"
+brew "jq"
 brew "lesspipe"
+brew "mas"
 brew "node"
 brew "node@22"
 brew "pyenv"
 brew "python@3.13"
+brew "ripgrep"
 brew "thefuck"
+brew "tmux"
 brew "tree"
 brew "wget"
 brew "wifi-password"
 brew "yarn"
 brew "youtube-dl"
-
-# =============================================================================
-# CLI Tools (suggested additions)
-# =============================================================================
-brew "jq"
-brew "mas"
-brew "ripgrep"
 
 # =============================================================================
 # Cask Apps (already installed via Homebrew)
