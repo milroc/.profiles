@@ -27,7 +27,23 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
+# Bun
+if [ -d "$HOME/.bun" ]; then
+  export BUN_INSTALL="$HOME/.bun"
+  export PATH="$BUN_INSTALL/bin:$PATH"
+fi
+
 # thefuck
 if command -v thefuck &> /dev/null; then
   eval "$(thefuck --alias)"
 fi
+
+# bun completions
+[ -s "/Users/milroc/.bun/_bun" ] && source "/Users/milroc/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Go
+export PATH="$PATH:$HOME/go/bin"
